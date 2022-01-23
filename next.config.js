@@ -1,11 +1,6 @@
 const isDev = process.env.NODE_ENV === 'development';
 
-let config = {
-  images: {
-    loader: 'akamai',
-    path: '',
-  },
-};
+let config = {};
 if (!isDev) {
   config = {
     assetsPrefix: '/portfolio',
@@ -13,5 +8,9 @@ if (!isDev) {
   };
 }
 module.exports = {
+  images: {
+    loader: 'akamai',
+    path: '',
+  },
   ...config,
 };
