@@ -6,7 +6,7 @@ let config = {
     path: 'https://example.com/myaccount/',
   },
 };
-if (!isDev) {
+if (!isDev || true) {
   config = {
     assetsPrefix: '/portfolio',
     basePath: '/portfolio',
