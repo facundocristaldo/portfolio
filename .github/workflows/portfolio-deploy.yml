@@ -34,6 +34,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.5.9
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+          NODE_ENV: 'production'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
