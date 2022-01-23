@@ -27,7 +27,13 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+          NODE_ENV: 'production'
       - run: npm run export
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+          NODE_ENV: 'production'
       - run: touch ./out/.nojekyll
 
       - name: Deploy to GH Pages
