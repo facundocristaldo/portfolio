@@ -9,7 +9,9 @@ import { Sidebar } from 'components/Sidebar';
 import { PatientsByGenter } from 'components/PatientsByGender';
 import { StatisticCard } from 'components/StatisticCard';
 import { InOutPatientsTrend } from 'components/InOutPatientsTrend';
-
+import { TimeAdmitted } from 'components/TimeAdmitted';
+import { PatientsPerMonth } from 'components/PatientsPerMonth';
+import colors from 'styles/variablesExport.module.scss';
 const ResponsiveGridLayout = WidthProvider(Responsive);
 const getLayoutsFromSomewhere = (): {
   lg: Layout[];
@@ -133,13 +135,17 @@ const Dashboard: React.FC = () => {
               <PatientsByGenter />
             </div>
             <div key="7" className={styles.card}>
-              7
+              <TimeAdmitted />
             </div>
             <div key="8" className={styles.card}>
               8
             </div>
-            <div key="9" className={styles.card}>
-              9
+            <div
+              key="9"
+              className={styles.card}
+              style={{ backgroundColor: colors.primaryColor }}
+            >
+              <PatientsPerMonth />
             </div>
           </ResponsiveGridLayout>
         </div>

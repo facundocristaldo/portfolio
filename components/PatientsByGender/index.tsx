@@ -2,17 +2,28 @@ import React from 'react';
 import styles from './index.module.scss';
 import colors from 'styles/variablesExport.module.scss';
 import { Chart as ChartJS, Tooltip, Legend, ArcElement } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import { ChartProps, Doughnut } from 'react-chartjs-2';
 import { CardTitle } from 'components/CardTitle';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const PatientsByGenter = () => {
-  const patientsByGenderConfig = {
+  const patientsByGenderConfig: Omit<ChartProps, 'type'> = {
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: false,
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+        },
+      },
+    },
     data: {
       labels: ['Male', 'Female'],
       datasets: [
         {
-          id: 1,
           data: [46, 54],
           backgroundColor: [colors.primaryColor, colors.orange],
         },
@@ -24,7 +35,7 @@ export const PatientsByGenter = () => {
       <CardTitle title={'Patients by Gender'} />
       <div className={styles.patientsByGenderCardContent}>
         <Doughnut
-          {...patientsByGenderConfig}
+          {...(patientsByGenderConfig as any)}
           className={styles.patientsByGenderChart}
         />
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.scss';
 import classNames from 'classnames';
-import { Bar, Doughnut } from 'react-chartjs-2';
+import { Bar, ChartProps, Doughnut } from 'react-chartjs-2';
 import colors from 'styles/variablesExport.module.scss';
 import {
   Chart as ChartJS,
@@ -24,11 +24,14 @@ ChartJS.register(
   Legend
 );
 export const InOutPatientsTrend = () => {
-  const InOutPatientsTrendConfig = {
+  const InOutPatientsTrendConfig: Omit<ChartProps, 'type'> = {
     options: {
       responsive: true,
       plugins: {
         title: {
+          display: false,
+        },
+        legend: {
           display: false,
         },
       },
@@ -57,18 +60,29 @@ export const InOutPatientsTrend = () => {
     },
   };
   const incoming = InOutPatientsTrendConfig.data.datasets[0].data.reduce(
-    (p, c) => c + p
-  );
+    (p, c) => (c as number) + (p as number)
+  ) as number;
   const outcoming = InOutPatientsTrendConfig.data.datasets[1].data.reduce(
-    (p, c) => c + p
-  );
+    (p, c) => (c as number) + (p as number)
+  ) as number;
   const total = incoming + outcoming;
-  const doughnutConfig = {
+  const doughnutConfig: Omit<ChartProps, 'type'> = {
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: false,
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+        },
+      },
+    },
     data: {
       labels: ['Inpatients', 'Outpatients'],
       datasets: [
         {
-          id: 1,
           data: [(incoming * 100) / total, (outcoming * 100) / total],
           backgroundColor: [colors.primaryColor, colors.green],
         },
@@ -80,10 +94,13 @@ export const InOutPatientsTrend = () => {
       <CardTitle title={'Outpatiens vs. Inpatients Trend'} />
       <div className={styles.outinPatientsCardContent}>
         <div style={{ flex: '4' }}>
-          <Bar {...InOutPatientsTrendConfig} className={styles.chart} />
+          <Bar
+            {...(InOutPatientsTrendConfig as any)}
+            className={styles.chart}
+          />
         </div>
         <div style={{ flex: '2' }}>
-          <Doughnut {...doughnutConfig} className={styles.chart} />
+          <Doughnut {...(doughnutConfig as any)} className={styles.chart} />
         </div>
       </div>
     </>
