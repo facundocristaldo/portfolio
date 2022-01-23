@@ -1,0 +1,14 @@
+@import './variables';
+
+:export {
+  primaryColor: $primaryColor;
+  softPrimaryColor: $softPrimaryColor;
+  transitionTime: $transitionTime;
+  black1: $black-1;
+  black2: $black-2;
+  black3: $black-3;
+  white1: $white-1;
+  white2: $white-2;
+  orange: $orange;
+  green: $green;
+}

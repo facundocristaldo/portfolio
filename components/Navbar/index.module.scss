@@ -1,0 +1,39 @@
+.navbar {
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 4em;
+
+  .photo {
+  }
+  .searchbar {
+    flex: 1;
+    text-align: left;
+    margin-left: 10em;
+  }
+  .usermenu {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    .notification {
+    }
+    .user {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+      .profilepic {
+      }
+      .menudropdown {
+        .icon {
+        }
+        .menulist {
+          display: none;
+          .menuitem {
+          }
+        }
+      }
+    }
+  }
+}

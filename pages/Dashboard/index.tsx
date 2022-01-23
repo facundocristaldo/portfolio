@@ -1,20 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Responsive, WidthProvider, Layout } from 'react-grid-layout';
 import styles from './index.module.scss';
-import {
-  BsFillFileEarmarkMedicalFill,
-  BsFillFileMedicalFill,
-  BsFillGeoAltFill,
-  BsFillHexagonFill,
-  BsFillHouseDoorFill,
-  BsFillPeopleFill,
-  BsFillPieChartFill,
-  BsPlusLg,
-  BsWallet,
-} from 'react-icons/bs';
+import { BsFillPeopleFill, BsWallet } from 'react-icons/bs';
 import { FaAmbulance, FaBed } from 'react-icons/fa';
-import classNames from 'classnames';
-import { Pie, PieConfig } from '@ant-design/plots';
+
+import { Navbar } from 'components/Navbar';
+import { Sidebar } from 'components/Sidebar';
+import { PatientsByGenter } from 'components/PatientsByGender';
+import { StatisticCard } from 'components/StatisticCard';
+import { InOutPatientsTrend } from 'components/InOutPatientsTrend';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 const getLayoutsFromSomewhere = (): {
@@ -82,117 +76,13 @@ const getLayoutsFromSomewhere = (): {
 });
 const Dashboard: React.FC = () => {
   const layouts = getLayoutsFromSomewhere();
-  const patientsByGenderData = [
-    {
-      type: 'Male',
-      value: 46,
-    },
-    {
-      type: 'Female',
-      value: 54,
-    },
-  ];
-  const patientsByGenderConfig: PieConfig = {
-    height: 250,
-    data: patientsByGenderData,
-    appendPadding: 10,
-    angleField: 'value',
-    colorField: 'type',
-    radius: 1,
-    innerRadius: 0.64,
-    meta: {
-      value: {
-        formatter: (v) => `${v}%`,
-      },
-    },
-    className: styles.patientsByGenderChart,
-  };
+
   return (
     <div className={styles.layout}>
-      <div className={styles.navbar}>
-        <div className={styles.photo}>Logo</div>
-        <div className={styles.searchbar}>
-          <span>search</span>
-          <input type="text" />
-        </div>
-        <div className={styles.usermenu}>
-          <div className={styles.notification}>
-            <span>bell</span>
-          </div>
-          <div className={styles.user}>
-            <div className={styles.profilepic}>
-              <span>profile</span>
-            </div>
-            <div className={styles.menudropdown}>
-              <div className={styles.icon}>
-                <span>downicon</span>
-              </div>
-              <div className={styles.menulist}>
-                <div className={styles.menuitem}>Profile</div>
-                <div className={styles.menuitem}>Settings</div>
-                <div className={styles.menuitem}>Log out</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navbar />
       <div className={styles.container}>
-        <div className={styles.sidebar}>
-          <div className={styles.header}>
-            <div className={styles.menuitem}>
-              <div className={styles.label}>Register Patient</div>
-              <div className={styles.icon}>
-                <BsPlusLg />
-              </div>
-            </div>
-          </div>
-          <div className={styles.menuitem}>
-            <div className={styles.icon}>
-              <BsFillPeopleFill />
-            </div>
-            <div className={styles.label}>Patients</div>
-          </div>
-          <div className={styles.menuitem}>
-            <div className={styles.icon}>
-              <BsFillPieChartFill />
-            </div>
-            <div className={styles.label}>Overview</div>
-          </div>
-          <div className={styles.menuitem}>
-            <div className={styles.icon}>
-              <BsFillGeoAltFill />
-            </div>
-            <div className={styles.label}>Map</div>
-          </div>
-          <div className={styles.menuitem}>
-            <div className={styles.icon}>
-              <BsFillHouseDoorFill />
-            </div>
-            <div className={styles.label}>Departments</div>
-          </div>
-          <div className={styles.menuitem}>
-            <div className={styles.icon}>
-              <BsFillFileMedicalFill />
-            </div>
-            <div className={styles.label}>Doctors</div>
-          </div>
-          <div className={styles.menuitem}>
-            <div className={styles.icon}>
-              <BsFillFileEarmarkMedicalFill />
-            </div>
-            <div className={styles.label}>History</div>
-          </div>
-          <div className={styles.footer}>
-            <div className={styles.menuitem}>
-              <div className={styles.icon}>
-                <BsFillHexagonFill />
-              </div>
-              <div className={styles.label}>Settings</div>
-            </div>
-          </div>
-        </div>
+        <Sidebar />
         <div className={styles.content}>
-          <div className={styles.title}></div>
           <ResponsiveGridLayout
             className={styles.layout}
             layouts={layouts}
@@ -200,79 +90,47 @@ const Dashboard: React.FC = () => {
             breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
             cols={{ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 }}
           >
-            <div key="1" className={classNames(styles.card, styles.infoCard)}>
-              <div className={styles.iconContainer}>
-                <div className={styles.icon}>
-                  <FaBed />
-                </div>
-              </div>
-              <div className={styles.info}>
-                <div className={styles.line1}>
-                  <p>$3,256</p>
-                </div>
-                <div className={styles.line2}>
-                  <p>Total Patients</p>
-                </div>
-              </div>
+            <div key="1" className={styles.card}>
+              <StatisticCard
+                aditionalText="Total Patients"
+                number="$3,256"
+                icon={<FaBed />}
+                color={'#006363'}
+                backgroundColor={'#90ffff80'}
+              />
             </div>
-            <div key="2" className={classNames(styles.card, styles.infoCard)}>
-              <div className={styles.iconContainer}>
-                <div className={styles.icon}>
-                  <BsFillPeopleFill />
-                </div>
-              </div>
-              <div className={styles.info}>
-                <div className={styles.line1}>
-                  <p>394</p>
-                </div>
-                <div className={styles.line2}>
-                  <p>Available Staff</p>
-                </div>
-              </div>
+            <div key="2" className={styles.card}>
+              <StatisticCard
+                aditionalText="Available Staff"
+                number="394"
+                icon={<BsFillPeopleFill />}
+                color={'#006363'}
+                backgroundColor={'#90ffff80'}
+              />
             </div>
-            <div key="3" className={classNames(styles.card, styles.infoCard)}>
-              <div className={styles.iconContainer}>
-                <div className={styles.icon}>
-                  <BsWallet />
-                </div>
-              </div>
-              <div className={styles.info}>
-                <div className={styles.line1}>
-                  <p>$2,536</p>
-                </div>
-                <div className={styles.line2}>
-                  <p>Avg. Teat. Cost</p>
-                </div>
-              </div>
+            <div key="3" className={styles.card}>
+              <StatisticCard
+                aditionalText="Avg. Teat. Cost"
+                number="$2,536"
+                icon={<BsWallet />}
+                color={'#006363'}
+                backgroundColor={'#90ffff80'}
+              />
             </div>
-            <div key="4" className={classNames(styles.card, styles.infoCard)}>
-              <div className={styles.iconContainer}>
-                <div className={styles.icon}>
-                  <FaAmbulance />
-                </div>
-              </div>
-              <div className={styles.info}>
-                <div className={styles.line1}>
-                  <p>38</p>
-                </div>
-                <div className={styles.line2}>
-                  <p>Available Cars</p>
-                </div>
-              </div>
+            <div key="4" className={styles.card}>
+              <StatisticCard
+                aditionalText="Available Cars"
+                number="38"
+                icon={<FaAmbulance />}
+                color={'#006363'}
+                backgroundColor={'#90ffff80'}
+              />
             </div>
             <div key="5" className={styles.card}>
-              5
+              <InOutPatientsTrend />
             </div>
-            <div
-              key="6"
-              className={classNames(styles.card, styles.patientsByGenderCard)}
-            >
-              <div className={styles.titleContainer}>
-                <p className={styles.title}>Patients by Gender</p>
-              </div>
-              <div className={styles.patientsByGenderCardContent}>
-                <Pie {...patientsByGenderConfig} />
-              </div>
+            <div key="6" className={styles.card}>
+              <PatientsByGenter />
             </div>
             <div key="7" className={styles.card}>
               7

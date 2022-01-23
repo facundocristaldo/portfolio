@@ -1,0 +1,40 @@
+@import 'styles/variables';
+.card {
+  background-color: $white-1;
+  border-radius: 1em;
+  flex: 1;
+  &.infoCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    .iconContainer {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        font-size: 20px;
+        height: 75px;
+        width: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+    }
+    .info {
+      flex: 2;
+      .line1 {
+        color: $black-1;
+        font-size: 1.5em;
+        font-weight: bolder;
+      }
+      .line2 {
+        color: $black-3;
+        font-size: 1em;
+        font-weight: bold;
+      }
+    }
+  }
+}

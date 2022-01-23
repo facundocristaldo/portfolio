@@ -1,173 +1,20 @@
 @import 'styles/variables';
 
-.navbar {
-  height: 75px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5em 4em;
-
-  .photo {
-  }
-  .searchbar {
-    flex: 1;
-    text-align: left;
-    margin-left: 10em;
-  }
-  .usermenu {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5em;
-    .notification {
-    }
-    .user {
-      display: flex;
-      flex-direction: row;
-      gap: 0.5em;
-      .profilepic {
-      }
-      .menudropdown {
-        .icon {
-        }
-        .menulist {
-          display: none;
-          .menuitem {
-          }
-        }
-      }
-    }
-  }
-}
 .container {
   display: flex;
-  .sidebar {
-    width: 15em;
-    padding: 0 1em;
-
-    .menuitem {
-      border-radius: 0.5em;
-      width: 100%;
-      height: 50px;
-      margin: 10px 0;
-      display: flex;
-      flex-direction: row;
-      color: $black-2;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      padding: 0 1em;
-
-      &.active,
-      &:hover {
-        .icon {
-          color: $primaryColor;
-          transition: color $transitionTime ease;
-        }
-      }
-      .icon {
-        text-align: center;
-        padding: 0.5em;
-      }
-      .label {
-        padding: 0.5em;
-        flex: 1;
-        &.active {
-          color: $primaryColor;
-        }
-      }
-    }
-    .header,
-    .footer {
-      margin: 3em 0;
-    }
-    .header {
-      .menuitem {
-        background-color: $primaryColor;
-        color: $white-1;
-        .icon {
-        }
-        .label {
-        }
-      }
-    }
-    .footer {
-      .menuitem {
-        .icon {
-        }
-        .label {
-        }
-      }
-    }
-  }
 
   .content {
     flex: 1;
     background-color: $softPrimaryColor;
     position: relative;
-
-    .title {
-    }
+    height: 100%;
     .layout {
       .card {
         background-color: $white-1;
         border-radius: 1em;
-
-        &.infoCard {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-around;
-          align-items: center;
-          .iconContainer {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .icon {
-              font-size: 20px;
-              height: 75px;
-              width: 75px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              background-color: rgba(144, 255, 255, 0.5);
-              color: rgb(0, 99, 99);
-              border-radius: 50%;
-            }
-          }
-          .info {
-            flex: 2;
-            .line1 {
-              color: $black-1;
-              font-size: 1.5em;
-              font-weight: bolder;
-            }
-            .line2 {
-              color: $black-3;
-              font-size: 1em;
-              font-weight: bold;
-            }
-          }
-        }
+        display: flex;
+        flex-direction: column;
       }
     }
-  }
-}
-.patientsByGenderCard {
-  height: 100%;
-  .titleContainer {
-    border-bottom: 1px solid $white-2;
-    padding: 1em;
-    .title {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: $black-1;
-      margin: 0;
-    }
-  }
-  .patientsByGenderChart {
-    margin: auto;
-    width: 90%;
-    height: 90% !important;
   }
 }
