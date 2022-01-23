@@ -97,8 +97,8 @@ const Dashboard: React.FC = () => {
                 aditionalText="Total Patients"
                 number="$3,256"
                 icon={<FaBed />}
-                color={'#006363'}
-                backgroundColor={'#90ffff80'}
+                color={'#742bde'}
+                backgroundColor={'#f3ecfd'}
               />
             </div>
             <div key="2" className={styles.card}>
@@ -106,8 +106,8 @@ const Dashboard: React.FC = () => {
                 aditionalText="Available Staff"
                 number="394"
                 icon={<BsFillPeopleFill />}
-                color={'#006363'}
-                backgroundColor={'#90ffff80'}
+                color={'#41b6ff'}
+                backgroundColor={'#effaff'}
               />
             </div>
             <div key="3" className={styles.card}>
@@ -115,8 +115,8 @@ const Dashboard: React.FC = () => {
                 aditionalText="Avg. Teat. Cost"
                 number="$2,536"
                 icon={<BsWallet />}
-                color={'#006363'}
-                backgroundColor={'#90ffff80'}
+                color={'#ff8b4f'}
+                backgroundColor={'#fff1ea'}
               />
             </div>
             <div key="4" className={styles.card}>
@@ -124,8 +124,8 @@ const Dashboard: React.FC = () => {
                 aditionalText="Available Cars"
                 number="38"
                 icon={<FaAmbulance />}
-                color={'#006363'}
-                backgroundColor={'#90ffff80'}
+                color={'#ff4c80'}
+                backgroundColor={'#ffeef2'}
               />
             </div>
             <div key="5" className={styles.card}>
